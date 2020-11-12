@@ -1,5 +1,5 @@
 var helicopterIMG, helicopterSprite, packageSprite,packageIMG;
-var packageBody,ground
+var packageBody,ground, boxBottom, boxSide1, boxSide2;
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
@@ -26,6 +26,8 @@ function setup() {
 
 	groundSprite=createSprite(width/2, height-35, width,10);
 	groundSprite.shapeColor=color(255)
+
+	boxBottom=createSprite(helicopterSprite.x,helicopterSprite.y,20,200);
 
 
 	engine = Engine.create();
@@ -58,6 +60,8 @@ function keyPressed() {
  if (keyCode === DOWN_ARROW) {
     // Look at the hints in the document and understand how to make the package body fall only on
 	Matter.Body.setStatic(packageBody,false); 
+	Matter.Body.setStatic(boxBottom,false); 
+
 	packageBody.setScale=0.5; 
 	packageBody.restitution=0.6;
   }
